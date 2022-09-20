@@ -39,11 +39,15 @@ public class FirstScriptTestTest {
 
     @Test
     public void eightComponents() {
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
-
+      //  driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+    	driver.get("https://nfe.prefeitura.sp.gov.br/contribuinte/notaprint.aspx?ccm=80263909&nf=43411&cod=9QPTLU22");
+    	
+    	
         String title = driver.getTitle();
-        assertEquals("Web form", title);
+        //assertEquals("Web form", title);
 
+        System.out.println(title);
+   
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
         WebElement textBox = driver.findElement(By.name("my-text"));
