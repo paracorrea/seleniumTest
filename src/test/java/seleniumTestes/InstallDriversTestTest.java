@@ -1,9 +1,11 @@
 package seleniumTestes;
 
+import static org.junit.Assert.*;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.time.Duration;
 
 import org.junit.Test;
@@ -19,61 +21,47 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class InstallDriversTestTest {
-
+	
 	/*
 	 * @Test public void chromeSession() { WebDriverManager.chromedriver().setup();
 	 * 
 	 * WebDriver driver = new ChromeDriver();
 	 * 
-	 * driver.quit()
-	 */;
-    
-	
-	/*
-	 * @Test public void edgeSession() { WebDriverManager.edgedriver().setup();
-	 * 
-	 * WebDriver driver = new EdgeDriver();
-	 * 
 	 * driver.quit(); }
 	 */
 
 	    @Test
-	    public void firefoxSession() {
-	        WebDriverManager.firefoxdriver().setup();
-
-	        WebDriver driver = new FirefoxDriver();
-
-	    	driver.get("https://nfe.prefeitura.sp.gov.br/contribuinte/notaprint.aspx?ccm=80263909&nf=43411&cod=9QPTLU22");
-
-	        String title = driver.getTitle();
-	        System.out.println(title);
+	    public void edgeSession() {
 	        
-	        //assertEquals("Web form", title);
-	      
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	WebDriverManager.edgedriver().setup();
 
-	        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+	        WebDriver driver = new EdgeDriver();
 
-	        WebElement textBox = driver.findElement(By.name("my-text"));
-	        WebElement submitButton = driver.findElement(By.cssSelector("button"));
-
-	        textBox.sendKeys("Selenium");
-	        submitButton.click();
-
-	        WebElement message = driver.findElement(By.id("message"));
-	        String value = message.getText();
-	        assertEquals("Received!", value);
 	        
-	        //driver.quit();
+	    	driver.get("https://notacarioca.rio.gov.br/contribuinte/notaprint.aspx?ccm=06042970&nf=4413015&verificacao=W3XJ3VHH");
+	    	driver.manage().timeouts().implicitlyWait(Duration.ofMillis(100));
+	    	
+	    	
+	    	WebElement submitButton = driver.findElement(By.className("btnNFSeGerarPdf"));
+	    	submitButton.click();
+	    	
+	    	//driver.quit();
 	    }
 
-//	    @Disabled("Only runs on Windows")
-//	    @Test
-//	    public void ieSession() {
-//	        WebDriverManager.iedriver().setup();
-//
-//	        WebDriver driver = new InternetExplorerDriver();
-//
-//	        driver.quit();
-//	    }
-	
-}
+		/*
+		 * @Test public void firefoxSession() {
+		 * WebDriverManager.firefoxdriver().setup();
+		 * 
+		 * WebDriver driver = new FirefoxDriver();
+		 * 
+		 * driver.quit(); }
+		 */
+	   
+	}
+
