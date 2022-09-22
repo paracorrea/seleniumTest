@@ -33,25 +33,23 @@ public class InstallDriversTestTest {
 	    @Test
 	    public void edgeSession() {
 	        
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
+	    		    	
 	    	WebDriverManager.edgedriver().setup();
 
 	        WebDriver driver = new EdgeDriver();
 
 	        
 	    	driver.get("https://notacarioca.rio.gov.br/contribuinte/notaprint.aspx?ccm=06042970&nf=4413015&verificacao=W3XJ3VHH");
-	    	driver.manage().timeouts().implicitlyWait(Duration.ofMillis(100));
+	    	driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 	    	
 	    	
 	    	WebElement submitButton = driver.findElement(By.className("btnNFSeGerarPdf"));
 	    	submitButton.click();
 	    	
-	    	//driver.quit();
+	    	driver.quit();
+	    	
+	    	
+	    
 	    }
 
 		/*
