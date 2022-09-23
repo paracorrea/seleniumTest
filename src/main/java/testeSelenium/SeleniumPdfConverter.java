@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -19,10 +20,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SeleniumPdfConverter {
 
+	
 	public static void main(String[] args) throws IOException {
 
-		File file = new File("C://Users//fernando.correa//Documents//GitHub//novos//folder//selenium//Notas ABB AUTOMACAO.csv");
+		geradorDeNotas();
 		
+	}
+	
+	public static void geradorDeNotas() throws IOException {
+		
+				
+		File file = new File("C://Users//fernando.correa//Documents//GitHub//novos//folder//selenium//Notas ABB AUTOMACAO.csv");
 		if (file.exists()) {
 			
 			FileInputStream stream = null;
@@ -33,49 +41,51 @@ public class SeleniumPdfConverter {
 				e1.printStackTrace();
 			}
 		       
-			 // FileInputStream stream = new FileInputStream("\\\\172.16.252.8\\mestat$\\movitelFolder/teste.csv");
-		      
-			  InputStreamReader reader = new InputStreamReader(stream);
+		  InputStreamReader reader = new InputStreamReader(stream);
 		       
-		        try (BufferedReader br = new BufferedReader(reader)) {
+		   try (BufferedReader br = new BufferedReader(reader)) {
 					
-		        	String linha = br.readLine();
-				
-					while(linha != null) {
-					   // LOG.info("Linha capturada: "+linha);
-					    linha = br.readLine();
+		       	String linha = br.readLine();
+				while(linha != null) {
+					 linha = br.readLine();
 					    
-					    try {
+					try {
 					    	
-					       	String[] urlCapturada = linha.split(";");
-					       	String url = urlCapturada[6];
-					       
-		
-					       	WebDriverManager.edgedriver().setup();
-
-					       	WebDriver driver = new EdgeDriver();
-
-        
-					       	driver.get(url);
-					       	driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-    	
-    	
-					       	WebElement submitButton = driver.findElement(By.className("btnNFSeGerarPdf"));
-					       	submitButton.click();
-					       	
-					       	
-					       	driver.quit();
-					       	//driver.quit();
-		
-					    } catch (NullPointerException e) {
-					    	 System.out.println("Linha vazia: "+e.getMessage());				 
-					    }
+					    String[] urlCapturada = linha.split(";");
+					    String url = urlCapturada[6];
+					    WebDriverManager.edgedriver().setup();
+				       
+					    WebDriver driver = new EdgeDriver();
+					    driver.get(url);
+					    driver.findElement(By.className("btnNFSeGerarPdf")).click();
 					    
-					    				       	
-					} // fecha o while enquanto houver linha no arquivo
-		        }
-		} else {
+					    
+ 				      // WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(15))
+ 				      //        .until(driver1 -> driver.findElement(By.className("btnNFSeGerarPdf")));
+					    
+					    WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(15))
+	 				           .until(driver1 -> driver.findElement(By.className("btnNFSeGerarPdf")));
+					    
+					    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(150));
+ 				       
+ 				       	
+ 				       
+ 				       	
+ 				       
+				       //	WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds((3))
+				       	//		.until(driver -> driver.findElement(By.className("btnNFSeGerarPdf")));
+				       	
+					    
+					   // driver.manage().timeouts().implicitlyWait(Duration.ofMillis(400000));
+					    submitButton.click();
+					    driver.quit();
 		
+					 } catch (NullPointerException e) {
+					    	 System.out.println("Linha vazia: "+e.getMessage());				 
+					 }
+  		    	} // fecha o while enquanto houver linha no arquivo
+		   }
+		} else {
 		System.out.println("Arquivo inexistente");
 		}
 }

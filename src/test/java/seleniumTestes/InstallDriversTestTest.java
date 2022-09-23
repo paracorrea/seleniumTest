@@ -22,35 +22,49 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class InstallDriversTestTest {
 	
+	
 	/*
-	 * @Test public void chromeSession() { WebDriverManager.chromedriver().setup();
+	 * @Test public void chromeSession() {
+	 * 
+	 * 
+	 * WebDriverManager.chromedriver().setup();
 	 * 
 	 * WebDriver driver = new ChromeDriver();
 	 * 
+	 * driver.get(
+	 * "https://notacarioca.rio.gov.br/contribuinte/notaprint.aspx?ccm=06042970&nf=4413015&verificacao=W3XJ3VHH"
+	 * ); driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+	 * 
+	 * 
+	 * WebElement submitButton =
+	 * driver.findElement(By.className("btnNFSeGerarPdf")); submitButton.click();
+	 * 
 	 * driver.quit(); }
+	 * 
 	 */
-
-	    @Test
-	    public void edgeSession() {
-	        
-	    		    	
-	    	WebDriverManager.edgedriver().setup();
-
-	        WebDriver driver = new EdgeDriver();
-
-	        
-	    	driver.get("https://notacarioca.rio.gov.br/contribuinte/notaprint.aspx?ccm=06042970&nf=4413015&verificacao=W3XJ3VHH");
-	    	driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
-	    	
-	    	
-	    	WebElement submitButton = driver.findElement(By.className("btnNFSeGerarPdf"));
-	    	submitButton.click();
-	    	
-	    	driver.quit();
-	    	
-	    	
-	    
-	    }
+		
+		  @Test public void edgeSession() {
+		  
+		  
+		  WebDriverManager.edgedriver().setup();
+		  
+		  WebDriver driver = new EdgeDriver();
+		  
+		  
+		  driver.get(
+		  "https://notacarioca.rio.gov.br/contribuinte/notaprint.aspx?ccm=06042970&nf=4413015&verificacao=W3XJ3VHH"
+		  ); driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+		  
+		  
+		  WebElement submitButton =
+		  driver.findElement(By.className("btnNFSeGerarPdf")); submitButton.click();
+		  
+		  driver.quit();
+		  
+		  
+		  
+		  }
+		 
 
 		/*
 		 * @Test public void firefoxSession() {
