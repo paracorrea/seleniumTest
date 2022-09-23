@@ -68,11 +68,7 @@ public class SeleniumPdfConverter {
 					    
 					    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(150));
  				       
- 				       	
- 				       
- 				       	
- 				       
-				       //	WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds((3))
+ 				         //	WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds((3))
 				       	//		.until(driver -> driver.findElement(By.className("btnNFSeGerarPdf")));
 				       	
 					    
